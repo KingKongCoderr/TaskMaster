@@ -1,5 +1,6 @@
 package jaihind.gobblessamerica.taskmaster;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,15 +15,27 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import javax.inject.Inject;
+
+import jaihind.gobblessamerica.taskmaster.di.ApplicationComponent;
+
 public class Navigationview extends AppCompatActivity
         implements android.support.design.widget.NavigationView.OnNavigationItemSelectedListener {
+/*
+    @Inject
+    FirebaseAuth mAuth;*/
 
     HomeFragment homeFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_view);
+        //ApplicationComponent.getDi().inject(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -51,6 +64,20 @@ public class Navigationview extends AppCompatActivity
                     .addToBackStack(null).commit();
 
         }
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // Name, email address, and profile photo Url
+            String name = user.getDisplayName();
+            String email = user.getEmail();
+            Uri photoUrl = user.getPhotoUrl();
+
+            // The user's ID, unique to the Firebase project. Do NOT use this value to
+            // authenticate with your backend server, if you have one. Use
+            // FirebaseUser.getToken() instead.
+            String uid = user.getUid();
+        }
+
 
 
     }
