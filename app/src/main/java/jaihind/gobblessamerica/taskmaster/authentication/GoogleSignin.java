@@ -59,6 +59,7 @@ public class GoogleSignin extends BaseActivity implements GoogleApiClient.OnConn
         setContentView(R.layout.activity_google_signin);
       //  ApplicationComponent.getDi().inject(this);
         ButterKnife.bind(this);
+        mAuth= FirebaseAuth.getInstance();
 
         // [START config_signin]
         // Configure Google Sign In
@@ -78,6 +79,7 @@ public class GoogleSignin extends BaseActivity implements GoogleApiClient.OnConn
                 signIn();
             }
         });
+
     }
 
     // [START signin]

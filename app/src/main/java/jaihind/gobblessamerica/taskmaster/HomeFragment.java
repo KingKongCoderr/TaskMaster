@@ -32,6 +32,8 @@ public class HomeFragment extends Fragment {
   /*  @Inject
     FirebaseAuth mAuth;*/
 
+  FirebaseAuth mAuth;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -43,8 +45,9 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
 
        // ApplicationComponent.getDi().inject(this);
+        mAuth= FirebaseAuth.getInstance();
         String name="";
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser user = mAuth.getCurrentUser();
         if (user != null) {
             // Name, email address, and profile photo Url
             name = user.getDisplayName();
@@ -55,8 +58,9 @@ public class HomeFragment extends Fragment {
             // authenticate with your backend server, if you have one. Use
             // FirebaseUser.getToken() instead.
             String uid = user.getUid();
+            //quote_tv.setText(name);
+
         }
-        quote_tv.setText(name);
 
 
         return inflater.inflate(R.layout.fragment_home, container, false);
