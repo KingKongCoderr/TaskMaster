@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,6 +22,9 @@ import com.google.firebase.auth.FirebaseUser;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Optional;
 import jaihind.gobblessamerica.taskmaster.di.ApplicationComponent;
 
 public class Navigationview extends AppCompatActivity
@@ -28,6 +33,12 @@ public class Navigationview extends AppCompatActivity
     @Inject
     FirebaseAuth mAuth;*/
 
+
+  //  @BindView(R.id.user_iv)
+    ImageView mUser_iv;
+    //@BindView(R.id.username_tv)
+    TextView mUsername_tv;
+
     HomeFragment homeFragment;
 
 
@@ -35,6 +46,7 @@ public class Navigationview extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_view);
+        ButterKnife.bind(this);
         //ApplicationComponent.getDi().inject(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -57,6 +69,13 @@ public class Navigationview extends AppCompatActivity
         android.support.design.widget.NavigationView navigationView = (android.support.design.widget.NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        View headerView = navigationView.inflateHeaderView(R.layout.nav_header_navigation_view);
+      //  ButterKnife.bind(this,headerView);
+        mUser_iv=(ImageView)headerView.findViewById(R.id.user_iv);
+        mUsername_tv=(TextView)headerView.findViewById(R.id.username_tv);
+
+
+
         if(savedInstanceState==null){
 
             homeFragment=new HomeFragment();
@@ -76,6 +95,13 @@ public class Navigationview extends AppCompatActivity
             // authenticate with your backend server, if you have one. Use
             // FirebaseUser.getToken() instead.
             String uid = user.getUid();
+
+            //update ui for the respective user
+            String username= mUsername_tv.getText().toString();
+            mUsername_tv.setText(username + name);
+
+
+
         }
 
 

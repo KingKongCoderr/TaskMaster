@@ -16,6 +16,8 @@ import com.google.firebase.auth.FirebaseUser;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import jaihind.gobblessamerica.taskmaster.di.ApplicationComponent;
 
 
@@ -26,16 +28,21 @@ public class HomeFragment extends Fragment {
 
 
 
-    @BindView(R.id.quote_tv)
+   @BindView(R.id.quote_tv)
     TextView quote_tv;
+
+    private Unbinder unbinder=null;
+
 
   /*  @Inject
     FirebaseAuth mAuth;*/
 
   FirebaseAuth mAuth;
 
+
     public HomeFragment() {
         // Required empty public constructor
+
     }
 
 
@@ -44,7 +51,11 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
+        View v=inflater.inflate(R.layout.fragment_home, container, false);
        // ApplicationComponent.getDi().inject(this);
+        unbinder =  ButterKnife.bind(getActivity(),v);
+        quote_tv= (TextView)v.findViewById(R.id.quote_tv);
+
         mAuth= FirebaseAuth.getInstance();
         String name="";
         FirebaseUser user = mAuth.getCurrentUser();
@@ -58,12 +69,17 @@ public class HomeFragment extends Fragment {
             // authenticate with your backend server, if you have one. Use
             // FirebaseUser.getToken() instead.
             String uid = user.getUid();
-            //quote_tv.setText(name);
+            quote_tv.setText(name);
 
         }
 
 
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return v;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
 }
