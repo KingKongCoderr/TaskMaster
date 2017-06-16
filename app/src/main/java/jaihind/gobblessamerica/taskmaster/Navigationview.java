@@ -1,5 +1,6 @@
 package jaihind.gobblessamerica.taskmaster;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -25,13 +26,13 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Optional;
+import jaihind.gobblessamerica.taskmaster.authentication.GoogleSignin;
 import jaihind.gobblessamerica.taskmaster.di.ApplicationComponent;
 
 public class Navigationview extends AppCompatActivity
         implements android.support.design.widget.NavigationView.OnNavigationItemSelectedListener {
-/*
     @Inject
-    FirebaseAuth mAuth;*/
+    FirebaseAuth mAuth;
 
 
   //  @BindView(R.id.user_iv)
@@ -47,7 +48,7 @@ public class Navigationview extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_view);
         ButterKnife.bind(this);
-        //ApplicationComponent.getDi().inject(this);
+        ApplicationComponent.getDi().inject(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -172,6 +173,11 @@ public class Navigationview extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
+        }
+        else if(id == R.id.logout_menu_item){
+            mAuth.signOut();
+            Intent signout_intent=new Intent(this, GoogleSignin.class);
+            startActivity(signout_intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

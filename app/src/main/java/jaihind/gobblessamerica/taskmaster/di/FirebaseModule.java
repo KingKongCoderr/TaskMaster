@@ -1,11 +1,14 @@
 package jaihind.gobblessamerica.taskmaster.di;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
+
+import javax.inject.Named;
 
 import dagger.Module;
 import dagger.Provides;
@@ -42,6 +45,15 @@ public class FirebaseModule {
         // [END config_signin]
 
         return  gsi;
+    }
+
+    @Provides
+    @Named("CheckConnection")
+    public boolean provideCheckConnection() {
+        ConnectivityManager cm =
+                (ConnectivityManager) context.getSystemService(context.CONNECTIVITY_SERVICE);
+
+        return (cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnectedOrConnecting());
     }
 
 

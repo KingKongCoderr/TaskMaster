@@ -17,7 +17,7 @@ import jaihind.gobblessamerica.taskmaster.authentication.LoginActivity;
 @Singleton
 public interface AuthenticationComponent {
 
-   /* void inject(GoogleSignin googleSignin);
+    void inject(GoogleSignin googleSignin);
     void inject(Navigationview navigationView);
-    void inject(HomeFragment homeFragment);*/
+    void inject(HomeFragment homeFragment);
 }

@@ -26,6 +26,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,15 +38,18 @@ import jaihind.gobblessamerica.taskmaster.di.ApplicationComponent;
 public class GoogleSignin extends BaseActivity implements GoogleApiClient.OnConnectionFailedListener {
 
 
-    private static final String TAG ="firebase_debug" ;
-   /* @Inject
+    private static final String TAG = "firebase_debug";
+    @Inject
     FirebaseAuth mAuth;
+    //private FirebaseAuth mAuth;
+
+    @Inject
+    @Named("CheckConnection")
+    boolean isOnline;
 
     @Inject
     GoogleSignInOptions gso;
-*/
-   // [START declare_auth]
-   private FirebaseAuth mAuth;
+    // [START declare_auth]
     // [END declare_auth]
     @BindView(R.id.googlesignin_bt)
     SignInButton Googlesignin_bt;
@@ -57,26 +61,20 @@ public class GoogleSignin extends BaseActivity implements GoogleApiClient.OnConn
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google_signin);
-      //  ApplicationComponent.getDi().inject(this);
+        ApplicationComponent.getDi().inject(this);
         ButterKnife.bind(this);
-        mAuth= FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
-        // [START config_signin]
-        // Configure Google Sign In
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.webclientid))
-                .requestEmail()
-                .build();
-        // [END config_signin]
-
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
-                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-                .build();
         Googlesignin_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signIn();
+                ApplicationComponent.getDi().inject(GoogleSignin.this);
+                if (isOnline) {
+                    signIn();
+                } else {
+                    Toast.makeText(GoogleSignin.this, "Check Network connection", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 
@@ -84,6 +82,10 @@ public class GoogleSignin extends BaseActivity implements GoogleApiClient.OnConn
 
     // [START signin]
     private void signIn() {
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, 9001);
     }
@@ -125,7 +127,6 @@ public class GoogleSignin extends BaseActivity implements GoogleApiClient.OnConn
     // [END onactivityresult]
 
 
-
     // [START auth_with_google]
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d("firebase", "firebaseAuthWithGoogle:" + acct.getId());
@@ -159,12 +160,13 @@ public class GoogleSignin extends BaseActivity implements GoogleApiClient.OnConn
 
                 });
     }
+
     // [END auth_with_google]
     private void updateUI(FirebaseUser user) {
         hideProgressDialog();
 
         if (user != null) {
-            Intent signIntent= new Intent(this, Navigationview.class);
+            Intent signIntent = new Intent(this, Navigationview.class);
             startActivity(signIntent);
            /* mStatusTextView.setText(getString(R.string.google_status_fmt, user.getEmail()));
             mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
@@ -181,15 +183,10 @@ public class GoogleSignin extends BaseActivity implements GoogleApiClient.OnConn
     }
 
 
-
-
-
-
-
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
-        String con_result= connectionResult.getErrorMessage();
+        String con_result = connectionResult.getErrorMessage();
 
     }
 

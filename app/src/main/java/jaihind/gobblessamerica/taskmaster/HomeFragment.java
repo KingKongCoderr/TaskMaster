@@ -34,10 +34,9 @@ public class HomeFragment extends Fragment {
     private Unbinder unbinder=null;
 
 
-  /*  @Inject
-    FirebaseAuth mAuth;*/
-
-  FirebaseAuth mAuth;
+    @Inject
+    FirebaseAuth mAuth;
+    //FirebaseAuth mAuth;
 
 
     public HomeFragment() {
@@ -52,7 +51,7 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View v=inflater.inflate(R.layout.fragment_home, container, false);
-       // ApplicationComponent.getDi().inject(this);
+        ApplicationComponent.getDi().inject(this);
         unbinder =  ButterKnife.bind(getActivity(),v);
         quote_tv= (TextView)v.findViewById(R.id.quote_tv);
 

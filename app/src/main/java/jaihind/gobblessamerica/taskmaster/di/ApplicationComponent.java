@@ -8,15 +8,15 @@ import android.app.Application;
 
 public class ApplicationComponent extends Application {
 
-    //private static AuthenticationComponent di;
+    private static AuthenticationComponent di;
     @Override
     public void onCreate() {
         super.onCreate();
-      // di = DaggerAuthenticationComponent.builder().firebaseModule(new FirebaseModule(this)).build();
+      di = DaggerAuthenticationComponent.builder().firebaseModule(new FirebaseModule(this)).build();
 
     }
 
-   /* public static AuthenticationComponent getDi() {
+    public static AuthenticationComponent getDi() {
         return di;
-    }*/
+    }
 }
