@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
@@ -75,8 +76,6 @@ public class Navigationview extends AppCompatActivity
         mUser_iv=(ImageView)headerView.findViewById(R.id.user_iv);
         mUsername_tv=(TextView)headerView.findViewById(R.id.username_tv);
 
-
-
         if(savedInstanceState==null){
 
             homeFragment=new HomeFragment();
@@ -91,6 +90,7 @@ public class Navigationview extends AppCompatActivity
             String name = user.getDisplayName();
             String email = user.getEmail();
             Uri photoUrl = user.getPhotoUrl();
+            Picasso.with(Navigationview.this).load(photoUrl).into(mUser_iv);
 
             // The user's ID, unique to the Firebase project. Do NOT use this value to
             // authenticate with your backend server, if you have one. Use
