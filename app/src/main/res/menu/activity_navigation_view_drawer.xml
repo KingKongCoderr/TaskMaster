@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <group
+        android:id="@+id/action_group"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Home" />
+
+        <item
+            android:id="@+id/projects"
+            android:icon="@drawable/ic_project"
+            android:title="Projects" />
+        <item
+            android:id="@+id/fitness"
+            android:icon="@drawable/fitness_icon"
+            android:title="Fitness" />
+        <item
+            android:id="@+id/food"
+            android:icon="@drawable/food_icon"
+            android:title="Food" />
+        <item
+            android:id="@+id/groomother"
+            android:icon="@drawable/groomother_icon"
+            android:title="Grooming and other" />
+
+    </group>
+
+
+
+    <group android:id="@+id/share_group">
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>
+    </group>
+
+    <group android:id="@+id/logout_group">
+        <item
+            android:id="@+id/logout_menu_item"
+            android:title="Logout"
+            android:icon="@drawable/ic_logout"
+            >
+        </item>
+
+    </group>
+</menu>

@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "505028330470",
+    "firebase_url": "https://taskmaster-39eae.firebaseio.com",
+    "project_id": "taskmaster-39eae",
+    "storage_bucket": "taskmaster-39eae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:505028330470:android:dfe1fcf3186511b4",
+        "android_client_info": {
+          "package_name": "jaihind.gobblessamerica.taskmaster"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "505028330470-gqglqnpofh2n8l0jsued9ufophkg97e8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "jaihind.gobblessamerica.taskmaster",
+            "certificate_hash": "bcd27b74b91a973197c71e10510e6539c925cf3e"
+          }
+        },
+        {
+          "client_id": "505028330470-5evqnkaj33755hrnnb518are489pp3p2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAw4cuoQsc2keLsEUG1SJ_0sQgZURKxiJI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "505028330470-5evqnkaj33755hrnnb518are489pp3p2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:505028330470:android:90da12f2df10e1cc",
+        "android_client_info": {
+          "package_name": "jaihind.godblessamerica.taskmaster"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "505028330470-4l1jnk464mrl9iae9m9cjmu0p50bcdt4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "jaihind.godblessamerica.taskmaster",
+            "certificate_hash": "bcd27b74b91a973197c71e10510e6539c925cf3e"
+          }
+        },
+        {
+          "client_id": "505028330470-5evqnkaj33755hrnnb518are489pp3p2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAw4cuoQsc2keLsEUG1SJ_0sQgZURKxiJI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "505028330470-5evqnkaj33755hrnnb518are489pp3p2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
