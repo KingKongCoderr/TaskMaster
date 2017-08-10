@@ -3,19 +3,6 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         config
-                /*{
-            keyAlias KEY_ALIAS
-            keyPassword '6605281338taskmaster'
-            storeFile file('/Users/ntankasala/Documents/android_projects/keystore.jks')
-            storePassword '6605281338taskmaster'
-        }*/
-        /*release{
-            storeFile file(props['STOREFILE_MAC'])
-            storePassword props['STORE_PASSWORD']
-            keyAlias props['KEY_ALIAS']
-            keyPassword props['KEY_PASSWORD']
-        }*/
-
     }
     compileSdkVersion 25
     buildToolsVersion "26.0.0"
