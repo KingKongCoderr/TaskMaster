@@ -3,16 +3,13 @@ package jaihind.gobblessamerica.taskmaster.di;
 import android.content.Context;
 import android.net.ConnectivityManager;
 
-import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
 
 import javax.inject.Named;
 
 import dagger.Module;
 import dagger.Provides;
-import jaihind.gobblessamerica.taskmaster.MainActivity;
 import jaihind.gobblessamerica.taskmaster.R;
 
 

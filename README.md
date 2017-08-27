@@ -1,4 +1,4 @@
-# taskmaster
+# taskmaster (In progress will complete on coming few weekends)
 Android application to help with to-do's, grocery list, personal thoughts, other tasks.
 Makes use of the following Android features:
 

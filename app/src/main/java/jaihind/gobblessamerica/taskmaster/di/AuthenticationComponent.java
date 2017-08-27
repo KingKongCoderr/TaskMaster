@@ -1,14 +1,11 @@
 package jaihind.gobblessamerica.taskmaster.di;
 
-import android.support.design.widget.NavigationView;
-
 import javax.inject.Singleton;
 
 import dagger.Component;
-import jaihind.gobblessamerica.taskmaster.HomeFragment;
-import jaihind.gobblessamerica.taskmaster.Navigationview;
-import jaihind.gobblessamerica.taskmaster.authentication.GoogleSignin;
-import jaihind.gobblessamerica.taskmaster.authentication.LoginActivity;
+import jaihind.gobblessamerica.taskmaster.mvp.view.HomeFragment;
+import jaihind.gobblessamerica.taskmaster.mvp.view.Navigationview;
+import jaihind.gobblessamerica.taskmaster.mvp.authentication.GoogleSignin;
 
 /**
  * Created by nande on 6/11/2017.
