@@ -3,5 +3,6 @@
     <option name="SHOW_QUICK_DOC_ON_MOUSE_OVER_ELEMENT" value="true" />
     <option name="QUICK_DOC_ON_MOUSE_OVER_DELAY_MS" value="300" />
     <option name="IS_INDENT_GUIDES_SHOWN" value="false" />
+    <option name="IS_WHEEL_FONTCHANGE_ENABLED" value="true" />
   </component>
 </application>
